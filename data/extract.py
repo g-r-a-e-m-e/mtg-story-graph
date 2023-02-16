@@ -27,15 +27,7 @@ df.to_csv("default_cards_nodes.csv", index=True, index_label="id")
 def make_edges(dataframe):
     df = dataframe
     raw_edge_list = []
-#    for i in df.index:
-#        edges = [i]
-#        name = df.loc[i, "name"]
-#        referenced = df[df["oracle_text"].str.contains(name, na = False, regex = False)]
-#        
-#        for j in referenced.index:
-#            if i != j:
-#                edges.append(j)
-#
+    
     for i, row in df.iterrows():
         edges = [i]
         name = row["name"]
