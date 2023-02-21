@@ -19,7 +19,7 @@ keep_columns = ['name', 'mana_cost', 'cmc', 'type_line',
 # reassign DataFrame based on columns to keep
 df = df[keep_columns]
 
-# replace unescaped characters
+# replace unescaped bullshit
 df.replace(r"\n", " | ", inplace=True, regex=True)
 
 # dedupe based on card name and reset index
@@ -75,17 +75,14 @@ for i in df.index:
     else:
         mana_df.loc[i, mana_fields] = 0
 
-
 # create second remove_list to remove integer mana costs
-rem_list_2 = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "1000000", "2/B", "2/G", "2/R", "2/U", "2/W"]
+rem_list_2 = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "1000000", "2/B", "2/G", "2/R", "2/U", "2/W", "Y", "Z"]
 
 # drop irrelevant columns
 mana_df.drop(labels = rem_list_2, axis = 1, inplace = True)
 
 
 
-for mdf in mana_df:
-    print(f"{df.loc[1, 'name']} {df.loc[1, 'cmc']} {mdf}: {mana_df.loc[1, mdf]}")
 
 ########## BEGIN TESTING ##########
 # create cleaned_mana_fields list for testing
