@@ -60,13 +60,13 @@ for i in df.index:
         for n in j:
             try:
                 mana_cost = int(n[0]) * n[1]
-                if df.loc[i, 'cmc'] != 0.0 | df.loc[i, 'cmc'] != np.nan:
+                if (df.loc[i, 'cmc'] != 0.0) and (df.loc[i, 'cmc'] != np.nan):
                     weighted_mana_cost = mana_cost / df.loc[i, 'cmc']
                     mana_df.loc[i, 'GENERIC'] = weighted_mana_cost
                 else:
                     mana_df.loc[i, 'GENERIC'] = 0.0
             except:
-                if df.loc[i, 'cmc'] != 0.0 & df.loc[i, 'cmc'] != np.nan:
+                if (df.loc[i, 'cmc'] != 0.0) and (df.loc[i, 'cmc'] != np.nan):
                     mana_cost = n[1]
                     weighted_mana_cost = mana_cost / df.loc[i, 'cmc']
                     mana_df.loc[i, n[0]] = weighted_mana_cost
@@ -84,13 +84,8 @@ mana_df.drop(labels = rem_list_2, axis = 1, inplace = True)
 
 
 
-
 for mdf in mana_df:
     print(f"{df.loc[1, 'name']} {df.loc[1, 'cmc']} {mdf}: {mana_df.loc[1, mdf]}")
-
-
-
-
 
 ########## BEGIN TESTING ##########
 # create cleaned_mana_fields list for testing
